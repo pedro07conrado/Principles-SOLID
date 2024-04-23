@@ -18,7 +18,7 @@ A classe ´´Usuario´´ viola o SRP ao ter diversas responsabilidades relaciona
 A classe ´´Usuario´´ é fechada para modificação, pois adicionar novas funcionalidades, como recuperar o histórico de logins, exigiria modificar o código existente.
 
 **DIP (Dependency Inversion Principle - Princípio da Inversão de Dependência)**
-A classe ´´Usuario´´ depende diretamente da classe ´´User´´ do Django para realizar operações no banco de dados. Isso torna o código menos flexível e acoplado a uma implementação específica.
+A classe ´´Usuario´´ depende diretamente da classe ``User`` do Django para realizar operações no banco de dados. Isso torna o código menos flexível e acoplado a uma implementação específica.
 
 **LSP (Liskov Substitution Principle - Princípio da Substituição de Liskov)**
 A classe ´´Usuario´´ não segue o LSP, pois se você substituir um objeto ´´Usuario´´ por um objeto ´´SuperUsuario´´, algumas funcionalidades, como editar o perfil, podem não funcionar corretamente.
