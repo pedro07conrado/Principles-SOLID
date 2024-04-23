@@ -1,41 +1,36 @@
-Disciplina BCC3004 (Engenharia de Software) do Curso de Bacharelado em Ciência da Computação, da Universidade Tecnológica Federal do Paraná, Campus Campo Mourão. Explicação dos 4 princípios do SOLID para uma linguagem de programação.
-Neste guia,vamos analisar SRP (Single Responsibility Principle), OCP (Open-Closed Principle), DIP (Dependency Inversion Principle) e LSP (Liskov Substitution Principle) na prática, ultilizando Django. Com isses principios SOLID em Djnago, demonstrando como esses principios podem ser ultilizados para construir um código modular e fácil de manter. 
+# Disciplina BCC3004 - Engenharia de Software
+## Universidade Tecnológica Federal do Paraná
+### Campus Campo Mourão
 
-**EXEMPLOS**
+Este guia aborda os 4 princípios do SOLID aplicados à linguagem de programação utilizando o framework Django. Você encontrará exemplos práticos de como o SRP (Princípio da Responsabilidade Única), OCP (Princípio Aberto-Fechado), DIP (Princípio da Inversão de Dependência) e LSP (Princípio da Substituição de Liskov) podem ser aplicados para construir um código modular e fácil de manter.
 
+## Exemplos
 
-**EXEMPLO 1:Gerenciamento de Usuários**
+### Exemplo 1: Gerenciamento de Usuários
 
 **Cenário:**
-Um sistema Django que gerencia **usuários**. A classe ´´Usuario´´ possui métodos para criar, editar e excluir usuários, além de métodos para autenticar e recuperar informações do perfil.
+Em um sistema Django responsável pelo gerenciamento de **usuários**, a classe `Usuario` é encarregada de operações como criação, edição, exclusão, autenticação e recuperação de informações de perfil.
 
 **Análise:**
 
-**SRP (Single Responsibility Principle - Princípio da Responsabilidade Única)**
-A classe ``Usuario`` viola o SRP ao ter diversas responsabilidades relacionadas ao gerenciamento de usuários. Isso torna o código mais difícil de entender, testar e manter.
+**SRP (Princípio da Responsabilidade Única)**
+A classe `Usuario` viola o SRP ao assumir múltiplas responsabilidades relacionadas ao gerenciamento de usuários, dificultando a compreensão, teste e manutenção do código.
 
-**OCP (Open/Closed Principle - Princípio Aberto-Fechado)**
-A classe ``Usuario`` é fechada para modificação, pois adicionar novas funcionalidades, como recuperar o histórico de logins, exigiria modificar o código existente.
+**OCP (Princípio Aberto-Fechado)**
+A classe `Usuario` é fechada para modificação, o que significa que a adição de novas funcionalidades, como recuperar histórico de logins, exigiria modificar o código existente.
 
-**DIP (Dependency Inversion Principle - Princípio da Inversão de Dependência)**
-A classe ``Usuario`` depende diretamente da classe ``User`` do Django para realizar operações no banco de dados. Isso torna o código menos flexível e acoplado a uma implementação específica.
+**DIP (Princípio da Inversão de Dependência)**
+A classe `Usuario` possui uma dependência direta da classe `User` do Django para operações de banco de dados, resultando em um código menos flexível e fortemente acoplado a uma implementação específica.
 
-**LSP (Liskov Substitution Principle - Princípio da Substituição de Liskov)**
-A classe ``Usuario`` não segue o LSP, pois se você substituir um objeto ``Usuario`` por um objeto ``SuperUsuario``, algumas funcionalidades, como editar o perfil, podem não funcionar corretamente.
+**LSP (Princípio da Substituição de Liskov)**
+A classe `Usuario` não segue o LSP, pois a substituição por um objeto `SuperUsuario` pode levar a falhas em funcionalidades como edição de perfil.
 
 **Solução:**
 
-**SRP:** Dividir a classe ``Usuario`` em classes menores e mais focadas, como ``UsuarioService``, ``UsuarioRepository`` e ``UsuarioProfileService``. Cada classe terá uma única responsabilidade bem definida.
+**SRP:** Dividir a classe `Usuario` em classes mais específicas e focadas, como `UsuarioService`, `UsuarioRepository` e `UsuarioProfileService`, cada uma com uma única responsabilidade bem definida.
 
-**OCP:** Utilizar interfaces para definir o comportamento das classes. Dessa forma, novas funcionalidades podem ser adicionadas através de classes que implementam as interfaces existentes, sem modificar o código original.
+**OCP:** Utilizar interfaces para definir comportamentos das classes, permitindo a adição de novas funcionalidades por meio de implementações de interfaces sem modificar o código original.
 
-**DIP:** Utilizar injeção de dependência para fornecer as dependências necessárias para as classes. Isso torna o código mais flexível e desacoplado.
+**DIP:** Aplicar injeção de dependência para prover as dependências necessárias às classes, tornando o código mais flexível e desacoplado.
 
-**LSP:** Garantir que as subclasses implementem os métodos da superclasse de forma consistente e que não introduzam comportamentos inesperados
-
-
-
-
-
-
-
+**LSP:** Garantir que subclasses implementem os métodos da superclasse de forma consistente, sem introduzir comportamentos inesperados.
