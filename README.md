@@ -1,10 +1,10 @@
 Disciplina BCC3004 (Engenharia de Software) do Curso de Bacharelado em Ciência da Computação, da Universidade Tecnológica Federal do Paraná, Campus Campo Mourão. Explicação dos 4 princípios do SOLID para uma linguagem de programação.
 Neste guia,vamos analisar SRP (Single Responsibility Principle), OCP (Open-Closed Principle), DIP (Dependency Inversion Principle) e LSP (Liskov Substitution Principle) na prática, ultilizando Django. Com isses principios SOLID em Djnago, demonstrando como esses principios podem ser ultilizados para construir um código modular e fácil de manter. 
 
-*EXEMPLOS*
+**EXEMPLOS**
 
 
-*EXEMPLO 1:Gerenciamento de Usuários*
+**EXEMPLO 1:Gerenciamento de Usuários**
 
 **Cenário:**
 Um sistema Django que gerencia **usuários**. A classe 'Usuario' possui métodos para criar, editar e excluir usuários, além de métodos para autenticar e recuperar informações do perfil.
@@ -26,8 +26,11 @@ A classe 'Usuario' não segue o LSP, pois se você substituir um objeto 'Usuario
 **Solução:**
 
 **SRP:** Dividir a classe 'Usuario' em classes menores e mais focadas, como 'UsuarioService', 'UsuarioRepository' e 'UsuarioProfileService'. Cada classe terá uma única responsabilidade bem definida.
+
 **OCP:** Utilizar interfaces para definir o comportamento das classes. Dessa forma, novas funcionalidades podem ser adicionadas através de classes que implementam as interfaces existentes, sem modificar o código original.
+
 **DIP:** Utilizar injeção de dependência para fornecer as dependências necessárias para as classes. Isso torna o código mais flexível e desacoplado.
+
 **LSP:** Garantir que as subclasses implementem os métodos da superclasse de forma consistente e que não introduzam comportamentos inesperados
 
 
