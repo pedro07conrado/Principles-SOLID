@@ -7,25 +7,25 @@ Neste guia,vamos analisar SRP (Single Responsibility Principle), OCP (Open-Close
 **EXEMPLO 1:Gerenciamento de Usuários**
 
 **Cenário:**
-Um sistema Django que gerencia **usuários**. A classe 'Usuario' possui métodos para criar, editar e excluir usuários, além de métodos para autenticar e recuperar informações do perfil.
+Um sistema Django que gerencia **usuários**. A classe ´´Usuario´´ possui métodos para criar, editar e excluir usuários, além de métodos para autenticar e recuperar informações do perfil.
 
 **Análise:**
 
 **SRP (Single Responsibility Principle - Princípio da Responsabilidade Única)**
-A classe 'Usuario' viola o SRP ao ter diversas responsabilidades relacionadas ao gerenciamento de usuários. Isso torna o código mais difícil de entender, testar e manter.
+A classe ´´Usuario´´ viola o SRP ao ter diversas responsabilidades relacionadas ao gerenciamento de usuários. Isso torna o código mais difícil de entender, testar e manter.
 
 **OCP (Open/Closed Principle - Princípio Aberto-Fechado)**
-A classe 'Usuario' é fechada para modificação, pois adicionar novas funcionalidades, como recuperar o histórico de logins, exigiria modificar o código existente.
+A classe ´´Usuario´´ é fechada para modificação, pois adicionar novas funcionalidades, como recuperar o histórico de logins, exigiria modificar o código existente.
 
 **DIP (Dependency Inversion Principle - Princípio da Inversão de Dependência)**
-A classe 'Usuario' depende diretamente da classe 'User' do Django para realizar operações no banco de dados. Isso torna o código menos flexível e acoplado a uma implementação específica.
+A classe ´´Usuario´´ depende diretamente da classe ´´User´´ do Django para realizar operações no banco de dados. Isso torna o código menos flexível e acoplado a uma implementação específica.
 
 **LSP (Liskov Substitution Principle - Princípio da Substituição de Liskov)**
-A classe 'Usuario' não segue o LSP, pois se você substituir um objeto 'Usuario' por um objeto 'SuperUsuario', algumas funcionalidades, como editar o perfil, podem não funcionar corretamente.
+A classe ´´Usuario´´ não segue o LSP, pois se você substituir um objeto ´´Usuario´´ por um objeto ´´SuperUsuario´´, algumas funcionalidades, como editar o perfil, podem não funcionar corretamente.
 
 **Solução:**
 
-**SRP:** Dividir a classe 'Usuario' em classes menores e mais focadas, como 'UsuarioService', 'UsuarioRepository' e 'UsuarioProfileService'. Cada classe terá uma única responsabilidade bem definida.
+**SRP:** Dividir a classe 'Usuario' em classes menores e mais focadas, como ´´UsuarioService´, ´´UsuarioRepository´´ e ´´UsuarioProfileService´´. Cada classe terá uma única responsabilidade bem definida.
 
 **OCP:** Utilizar interfaces para definir o comportamento das classes. Dessa forma, novas funcionalidades podem ser adicionadas através de classes que implementam as interfaces existentes, sem modificar o código original.
 
