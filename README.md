@@ -63,7 +63,7 @@ Para resolver esses problemas e aplicar os princípios SOLID, podemos adotar as 
 
 1. **SRP (Princípio da Responsabilidade Única):**
    - Divida a responsabilidade da classe `PedidoService` em classes menores e mais focadas, como `PedidoService` para a lógica principal de processamento de pedidos e `NotificacaoService` para enviar notificações por email, SMS ou outro canal.
-
+   - 
 2. **OCP (Princípio Aberto-Fechado):**
    - Utilize interfaces para definir o comportamento das classes de pedido, permitindo a adição de novos tipos de pedidos sem modificar o código original. Por exemplo, `IPedido`.
 
